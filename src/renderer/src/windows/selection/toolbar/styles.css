@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Playfair+Display:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap');
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════
+     RETRO-FUTURISM: Atomic Age Elegance
+     时间折叠 - 1950s Space Age meets Victorian Industrial
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* Background - Deep Space Navy */
+  --color-background: transparent;
+  --color-void: #060810;
+  --color-deep-space: #0a0f1a;
+  --color-metal-dark: #12161f;
+  --color-metal-mid: #1a2030;
+
+  /* Primary - Warm Brass & Copper (Retro) */
+  --color-brass: #c9a86c;
+  --color-brass-light: #e8d5a3;
+  --color-brass-dark: #8b7355;
+  --color-copper: #b87333;
+  --color-copper-glow: rgba(184, 115, 51, 0.4);
+
+  /* Accent - Electric Teal & Atomic Violet (Future) */
+  --color-teal: #00d4aa;
+  --color-teal-glow: rgba(0, 212, 170, 0.3);
+  --color-violet: #7b68ee;
+  --color-violet-glow: rgba(123, 104, 238, 0.3);
+
+  /* Status Colors */
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
+  /* Text - Warm Cream & Patina */
+  --color-text: #f5f0e6;
+  --color-text-warm: rgba(245, 240, 230, 0.9);
+  --color-text-secondary: rgba(201, 168, 108, 0.7);
+  --color-text-dim: rgba(201, 168, 108, 0.4);
+  --color-text-patina: rgba(0, 212, 170, 0.8);
+
+  /* Glass & Borders */
+  --color-glass: rgba(10, 15, 26, 0.88);
+  --color-glass-light: rgba(18, 22, 31, 0.7);
+  --color-border: rgba(201, 168, 108, 0.2);
+  --color-border-active: rgba(201, 168, 108, 0.5);
+
+  /* Legacy aliases for compatibility */
+  --color-primary: var(--color-teal);
+  --color-primary-glow: var(--color-teal-glow);
+  --color-secondary: var(--color-brass);
+  --color-secondary-glow: var(--color-copper-glow);
+  --color-accent: var(--color-violet);
+  --color-hover: rgba(201, 168, 108, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: transparent;
+  color: var(--color-text);
+}
+
+/* Selection - Brass Highlight */
+::selection {
+  background: var(--color-brass);
+  color: var(--color-void);
+}

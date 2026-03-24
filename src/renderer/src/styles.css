@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Playfair+Display:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap');
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════
+     RETRO-FUTURISM: Atomic Age Elegance
+     时间折叠 - 1950s Space Age meets Victorian Industrial
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* Background - Deep Space Navy with Metallic Sheen */
+  --color-background: transparent;
+  --color-void: #060810;
+  --color-deep-space: #0a0f1a;
+  --color-metal-dark: #12161f;
+  --color-metal-mid: #1a2030;
+
+  /* Primary - Warm Brass & Copper (Retro) */
+  --color-brass: #c9a86c;
+  --color-brass-light: #e8d5a3;
+  --color-brass-dark: #8b7355;
+  --color-copper: #b87333;
+  --color-copper-glow: rgba(184, 115, 51, 0.4);
+
+  /* Accent - Electric Teal & Atomic Violet (Future) */
+  --color-teal: #00d4aa;
+  --color-teal-glow: rgba(0, 212, 170, 0.3);
+  --color-violet: #7b68ee;
+  --color-violet-glow: rgba(123, 104, 238, 0.3);
+
+  /* Status Colors */
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
+  /* Text - Warm Cream & Patina */
+  --color-text: #f5f0e6;
+  --color-text-warm: rgba(245, 240, 230, 0.9);
+  --color-text-secondary: rgba(201, 168, 108, 0.7);
+  --color-text-dim: rgba(201, 168, 108, 0.4);
+  --color-text-patina: rgba(0, 212, 170, 0.8);
+
+  /* Glass & Borders */
+  --color-glass: rgba(10, 15, 26, 0.88);
+  --color-glass-light: rgba(18, 22, 31, 0.7);
+  --color-border: rgba(201, 168, 108, 0.2);
+  --color-border-active: rgba(201, 168, 108, 0.5);
+  --color-border-glow: rgba(0, 212, 170, 0.4);
+
+  /* Effects */
+  --scanline-opacity: 0.015;
+  --noise-opacity: 0.03;
+  --grain-opacity: 0.02;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text);
+  /* 圆角裁剪 */
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ATMOSPHERIC EFFECTS
+   大气层效果 - 营造复古未来主义氛围
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Scanline Overlay - CRT Monitor Feel */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, var(--scanline-opacity)) 0px,
+    rgba(0, 0, 0, var(--scanline-opacity)) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Noise Texture - Film Grain Effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: var(--noise-opacity);
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: overlay;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CUSTOM SCROLLBAR
+   自定义滚动条 - 铜管机械质感
+   ═══════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-metal-dark);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-brass), var(--color-copper));
+  border-radius: 3px;
+  border: 1px solid var(--color-brass-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-brass-light), var(--color-brass));
+}
+
+/* Selection - Brass Highlight */
+::selection {
+  background: var(--color-brass);
+  color: var(--color-void);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   工具类
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Glass Morphism Base */
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+}
+
+/* Brass Glow Text */
+.brass-glow {
+  text-shadow:
+    0 0 8px var(--color-copper-glow),
+    0 0 16px var(--color-copper-glow);
+}
+
+/* Teal Glow */
+.teal-glow {
+  text-shadow:
+    0 0 8px var(--color-teal-glow),
+    0 0 16px var(--color-teal-glow);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS
+   动画 - 机械运动感
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes pulse-brass {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--color-copper-glow); }
+  50% { opacity: 0.8; box-shadow: 0 0 16px var(--color-copper-glow); }
+}
+
+@keyframes pulse-teal {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--color-teal-glow); }
+  50% { opacity: 0.8; box-shadow: 0 0 16px var(--color-teal-glow); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes glow-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.7; }
+  94% { opacity: 1; }
+  96% { opacity: 0.85; }
+  97% { opacity: 1; }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; max-height: 0; transform: translateY(-8px); }
+  to { opacity: 1; max-height: 400px; transform: translateY(0); }
+}
+
+@keyframes gear-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(90deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANT DESIGN OVERRIDES
+   Ant Design 组件覆盖
+   ═══════════════════════════════════════════════════════════════ */
+
+.ant-btn {
+  font-family: 'Audiowide', sans-serif !important;
+}
+
+.ant-select-selector {
+  background: var(--color-glass-light) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+  border-radius: 4px !important;
+}
+
+.ant-select-dropdown {
+  background: var(--color-glass) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 6px !important;
+}
+
+.ant-select-item {
+  color: var(--color-text) !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+.ant-select-item-option-active,
+.ant-select-item-option-selected {
+  background: rgba(201, 168, 108, 0.15) !important;
+}
+
+.ant-slider-track {
+  background: linear-gradient(90deg, var(--color-brass), var(--color-teal)) !important;
+}
+
+.ant-slider-handle {
+  border-color: var(--color-brass) !important;
+  background: var(--color-text) !important;
+}
+
+.ant-slider-handle:hover {
+  border-color: var(--color-teal) !important;
+}
+
+.ant-tooltip-inner {
+  background: var(--color-glass) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-text) !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+.ant-tooltip-arrow::before {
+  background: var(--color-glass) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MARKDOWN CONTENT STYLES
+   Markdown 内容样式
+   ═══════════════════════════════════════════════════════════════ */
+
+.markdown-content {
+  font-family: 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--color-brass-light);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+.markdown-content h1 { font-size: 1.6em; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3em; }
+.markdown-content h2 { font-size: 1.4em; }
+.markdown-content h3 { font-size: 1.2em; color: var(--color-teal); }
+.markdown-content h4 { font-size: 1.1em; }
+
+.markdown-content p {
+  margin: 0.8em 0;
+}
+
+.markdown-content strong {
+  color: var(--color-brass-light);
+  font-weight: 600;
+}
+
+.markdown-content em {
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.markdown-content a {
+  color: var(--color-teal);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.markdown-content a:hover {
+  border-bottom-color: var(--color-teal);
+}
+
+/* Code Blocks */
+.markdown-content code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: rgba(201, 168, 108, 0.1);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0.15em 0.4em;
+  color: var(--color-teal);
+}
+
+.markdown-content pre {
+  background: rgba(10, 15, 26, 0.8);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 1em 0;
+  overflow-x: auto;
+  position: relative;
+}
+
+.markdown-content pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-brass-dark), transparent);
+}
+
+.markdown-content pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.85em;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Lists */
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0.8em 0;
+  padding-left: 1.5em;
+}
+
+.markdown-content li {
+  margin: 0.4em 0;
+  position: relative;
+}
+
+.markdown-content ul li::marker {
+  color: var(--color-brass);
+}
+
+.markdown-content ol li::marker {
+  color: var(--color-brass);
+  font-weight: 500;
+}
+
+.markdown-content li > ul,
+.markdown-content li > ol {
+  margin: 0.2em 0;
+}
+
+/* Blockquotes */
+.markdown-content blockquote {
+  margin: 1em 0;
+  padding: 0.8em 1em;
+  background: rgba(201, 168, 108, 0.05);
+  border-left: 3px solid var(--color-brass);
+  border-radius: 0 4px 4px 0;
+  color: var(--color-text-secondary);
+}
+
+.markdown-content blockquote p {
+  margin: 0.4em 0;
+}
+
+/* Horizontal Rule */
+.markdown-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  margin: 1.5em 0;
+}
+
+/* Tables */
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.9em;
+}
+
+.markdown-content th,
+.markdown-content td {
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-content th {
+  background: rgba(201, 168, 108, 0.1);
+  color: var(--color-brass-light);
+  font-weight: 600;
+}
+
+.markdown-content tr:nth-child(even) {
+  background: rgba(201, 168, 108, 0.03);
+}
+
+/* Images */
+.markdown-content img {
+  max-width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  margin: 0.5em 0;
+}
+
+/* Task Lists */
+.markdown-content input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-brass);
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: middle;
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+}
+
+.markdown-content input[type="checkbox"]:checked {
+  background: var(--color-teal);
+  border-color: var(--color-teal);
+}
+
+.markdown-content input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  color: var(--color-void);
+}

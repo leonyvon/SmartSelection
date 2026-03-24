@@ -1,0 +1,56 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 核心渐变 -->
+    <linearGradient id="coreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4aa"/>
+      <stop offset="100%" style="stop-color:#7b68ee"/>
+    </linearGradient>
+
+    <!-- 发光效果 -->
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:rgba(0,212,170,0.8)"/>
+      <stop offset="50%" style="stop-color:rgba(123,104,238,0.4)"/>
+      <stop offset="100%" style="stop-color:rgba(0,212,170,0)"/>
+    </radialGradient>
+
+    <!-- 发光滤镜 -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="256" height="256" fill="#060810"/>
+
+  <!-- 圆形裁剪 -->
+  <clipPath id="circleClip">
+    <circle cx="128" cy="128" r="108"/>
+  </clipPath>
+
+  <g clip-path="url(#circleClip)">
+    <!-- 外层防护环 -->
+    <circle cx="128" cy="128" r="106" fill="none" stroke="#c9a86c" stroke-width="4"/>
+
+    <!-- 内层轨道 1 -->
+    <circle cx="128" cy="128" r="80" fill="none" stroke="rgba(0,212,170,0.3)" stroke-width="1.5"/>
+
+    <!-- 内层轨道 2 -->
+    <circle cx="128" cy="128" r="58" fill="none" stroke="rgba(0,212,170,0.25)" stroke-width="1.5"/>
+
+    <!-- 核心发光 -->
+    <circle cx="128" cy="128" r="42" fill="url(#glowGradient)"/>
+
+    <!-- 核心 -->
+    <circle cx="128" cy="128" r="26" fill="url(#coreGradient)"/>
+
+    <!-- 电子 1 (右上轨道) -->
+    <circle cx="184" cy="72" r="5" fill="#00d4aa" filter="url(#glow)"/>
+
+    <!-- 电子 2 (左下轨道) -->
+    <circle cx="86" cy="170" r="4" fill="#00d4aa" filter="url(#glow)"/>
+  </g>
+</svg>

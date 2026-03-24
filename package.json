@@ -1,0 +1,72 @@
+{
+  "name": "smart-selection",
+  "version": "1.0.0",
+  "description": "SmartSelection - A system-level text selection and AI processing tool",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "start": "electron-vite preview",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "@reduxjs/toolkit": "^2.2.1",
+    "antd": "^5.18.0",
+    "electron-store": "^8.2.0",
+    "i18next": "^23.10.1",
+    "koffi": "^2.15.2",
+    "lucide-react": "^0.400.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^14.1.0",
+    "react-markdown": "^10.1.0",
+    "react-redux": "^9.1.0",
+    "remark-gfm": "^4.0.1",
+    "selection-hook": "^1.0.0",
+    "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@types/node": "^20.14.8",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "electron": "^33.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1"
+  },
+  "build": {
+    "appId": "com.selection.assistant",
+    "productName": "Selection Assistant",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": "resources",
+        "filter": ["**/*.png"]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "resources/icon.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.png"
+    },
+    "linux": {
+      "icon": "resources/icon.png",
+      "category": "Utility"
+    }
+  }
+}
