@@ -2,6 +2,8 @@
   "name": "smart-selection",
   "version": "1.0.0",
   "description": "SmartSelection - A system-level text selection and AI processing tool",
+  "author": "leonyvon",
+  "license": "Apache-2.0",
   "main": "./out/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
