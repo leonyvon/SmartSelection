@@ -150,9 +150,7 @@ The application uses a multi-window architecture:
 
 Apache 2.0
 
-### Acknowledgments
 
-This project is extracted from the selection feature module of [Cherry Studio](https://github.com/cherryhq/cherry-studio).
 
 ---
 
@@ -302,6 +300,3 @@ selection-assistant/
 
 Apache 2.0
 
-### 致谢
-
-本项目提取自 [Cherry Studio](https://github.com/cherryhq/cherry-studio) 的划词功能模块。
