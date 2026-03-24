@@ -26,12 +26,12 @@ jobs:
           node-version: '20'
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 9
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build application
         run: pnpm build
@@ -39,10 +39,14 @@ jobs:
       - name: Build Electron app (Windows)
         if: matrix.os == 'windows-latest'
         run: pnpm exec electron-builder --win --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Electron app (macOS)
         if: matrix.os == 'macos-latest'
         run: pnpm exec electron-builder --mac --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifacts (Windows)
         if: matrix.os == 'windows-latest'
